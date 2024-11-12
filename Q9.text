@@ -1,0 +1,26 @@
+Q9. What would be the result of 2+5+”3″?
+Answer:-In JavaScript, the expression `2 + 5 + "3"` results in:
+
+```javascript
+2 + 5 + "3" // Output: "73"
+```
+
+### Explanation
+
+1. **Order of Operations**: JavaScript evaluates expressions from left to right.
+2. **First Operation (2 + 5)**: Since both `2` and `5` are numbers, JavaScript performs **addition**:
+   ```javascript
+   2 + 5 = 7
+   ```
+3. **Second Operation (7 + "3")**: Now we have `7 + "3"`. Here, JavaScript encounters a number (`7`) and a string (`"3"`). When it sees a **number** and a **string** with the `+` operator, it **converts the number to a string** and performs **string concatenation**:
+   ```javascript
+   "7" + "3" = "73"
+   ```
+
+So, the final result is:
+```javascript
+"73"
+```
+
+### Key Takeaway
+When mixing numbers and strings with the `+` operator, JavaScript will treat it as concatenation if any operand is a string.

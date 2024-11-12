@@ -1,0 +1,56 @@
+Q8. What is the difference between null & undefined?
+Answer:-In JavaScript, `null` and `undefined` are both used to represent "no value" or "empty" states, but they have key differences in how and when they're used. Here’s a breakdown:
+
+### 1. **Definition and Purpose**
+   - **`undefined`:** Represents the *absence of a value*. JavaScript assigns `undefined` automatically to variables that have been declared but not yet given a value.
+   - **`null`:** Represents an *intentional absence of value*. Developers often use `null` to indicate that a variable is intentionally empty, signaling that it will hold a value later, but currently has none.
+
+### 2. **Assignment**
+   - **`undefined`:** Automatically assigned by JavaScript when a variable is declared without an initial value.
+     ```javascript
+     let example;
+     console.log(example); // Output: undefined
+     ```
+   - **`null`:** Must be explicitly assigned by the developer.
+     ```javascript
+     let example = null;
+     console.log(example); // Output: null
+     ```
+
+### 3. **Type**
+   - **`undefined`:** Type is `undefined`.
+     ```javascript
+     typeof undefined; // Output: "undefined"
+     ```
+   - **`null`:** Type is `object` (due to a historical bug in JavaScript that’s still retained for compatibility).
+     ```javascript
+     typeof null; // Output: "object"
+     ```
+
+### 4. **Usage Context**
+   - **`undefined`:** Typically used to indicate an uninitialized variable or a missing function argument. It’s also used when accessing a non-existent property of an object.
+   - **`null`:** Commonly used to indicate the intentional absence of any object value, for example, to reset or clear a variable.
+
+### 5. **Equality**
+   - **Loose Equality (`==`):** `null` and `undefined` are considered loosely equal.
+     ```javascript
+     null == undefined; // Output: true
+     ```
+   - **Strict Equality (`===`):** `null` and `undefined` are not strictly equal, as they are different types.
+     ```javascript
+     null === undefined; // Output: false
+     ```
+
+### Summary Table
+
+| Feature         | `undefined`           | `null`                |
+|-----------------|-----------------------|-----------------------|
+| Definition      | Value not assigned    | Intentional empty value |
+| Assigned by     | JavaScript (default)  | Developer (explicit) |
+| Type            | `undefined`           | `object`             |
+| Equality (`==`) | Equal to `null`       | Equal to `undefined` |
+| Equality (`===`)| Not equal to `null`   | Not equal to `undefined` |
+
+In practice:
+- Use `undefined` when JavaScript itself hasn’t assigned a value.
+- Use `null` to explicitly indicate a variable is intentionally empty.

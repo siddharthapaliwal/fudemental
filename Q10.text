@@ -1,0 +1,70 @@
+Q10. What is the difference between Call & Apply?
+Answer:-In JavaScript, `call` and `apply` are both methods used to invoke functions and explicitly set the `this` context for those functions. They are very similar but have a key difference in how they handle arguments.
+
+### Key Differences Between `call` and `apply`
+
+1. **Argument Passing**
+   - **`call`**: Accepts a list of arguments, which you pass individually.
+     ```javascript
+     function greet(greeting, punctuation) {
+       console.log(greeting + ", " + this.name + punctuation);
+     }
+     
+     const person = { name: "Alice" };
+     greet.call(person, "Hello", "!"); // Output: "Hello, Alice!"
+     ```
+   - **`apply`**: Accepts arguments as an **array** (or an array-like object).
+     ```javascript
+     greet.apply(person, ["Hello", "!"]); // Output: "Hello, Alice!"
+     ```
+
+2. **Syntax Comparison**
+   - **`call` syntax**:
+     ```javascript
+     functionName.call(thisArg, arg1, arg2, ...);
+     ```
+   - **`apply` syntax**:
+     ```javascript
+     functionName.apply(thisArg, [arg1, arg2, ...]);
+     ```
+
+3. **Use Cases**
+   - **`call`**: Useful when the arguments are known and can be passed individually.
+   - **`apply`**: Convenient when you have an array of data you want to pass as arguments, such as when working with functions like `Math.max`, where you can pass an array of numbers without spreading them manually.
+     ```javascript
+     const numbers = [5, 6, 2, 3, 7];
+     Math.max.apply(null, numbers); // Output: 7
+     ```
+
+### Practical Example
+
+Here’s an example using `call` and `apply` with a function that calculates the area of a rectangle:
+
+```javascript
+function calculateArea(length, width) {
+  return length * width;
+}
+
+const rectangleDimensions = [10, 5];
+
+// Using `call`
+console.log(calculateArea.call(null, 10, 5)); // Output: 50
+
+// Using `apply`
+console.log(calculateArea.apply(null, rectangleDimensions)); // Output: 50
+```
+
+### Summary Table
+
+| Feature             | `call`                         | `apply`                     |
+|---------------------|--------------------------------|-----------------------------|
+| Argument Format     | Individual arguments           | Array or array-like object  |
+| Usage Example       | `func.call(thisArg, arg1, ...)` | `func.apply(thisArg, [arg1, ...])` |
+| Common Use Case     | When arguments are known       | When arguments are in an array |
+
+In modern JavaScript, you might also use the **spread operator (`...`)** with `call` in place of `apply`, achieving a similar result:
+```javascript
+calculateArea.call(null, ...rectangleDimensions); // Output: 50
+```
+
+Both `call` and `apply` are function methods to set the `this` context, with `call` for individual arguments and `apply` for arrays.

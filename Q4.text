@@ -1,0 +1,83 @@
+Q4. What are the scopes of a variable in JavaScript?
+Answer:-In JavaScript, the **scope** of a variable determines where the variable can be accessed or used within the code. JavaScript has several types of variable scope, including **global scope**, **function scope**, **block scope**, and **module scope**. Understanding scope is key to controlling variable visibility and memory usage in JavaScript.
+
+### 1. **Global Scope**
+   - Variables declared in the global scope are accessible from anywhere in the JavaScript program. This scope is defined outside of any function, block, or module.
+   - Global variables can be created by:
+     - Declaring a variable outside of any function or block.
+     - Omitting the `let`, `const`, or `var` keyword when assigning a value to a variable (this is not recommended as it can lead to accidental global variable creation).
+
+   **Example**:
+   ```javascript
+   let globalVariable = "I am global";
+
+   function exampleFunction() {
+       console.log(globalVariable); // Accessible here
+   }
+
+   exampleFunction(); // Output: I am global
+   ```
+
+### 2. **Function Scope**
+   - Variables declared with `var` inside a function are function-scoped. This means they can only be accessed within the function in which they were declared, regardless of block structure (e.g., inside `if` or `for` blocks).
+   - Function-scoped variables are created with the `var` keyword (or by declaring a function itself).
+
+   **Example**:
+   ```javascript
+   function exampleFunction() {
+       var functionScopedVariable = "I am inside a function";
+       console.log(functionScopedVariable); // Accessible here
+   }
+
+   exampleFunction();
+   // console.log(functionScopedVariable); // Error: Not accessible here
+   ```
+
+### 3. **Block Scope**
+   - Block scope means that variables are accessible only within the block in which they were declared (typically within curly braces `{ }`, such as `if`, `for`, `while` blocks).
+   - Variables declared with `let` and `const` are block-scoped, which means they are confined to the block where they are defined and are not accessible outside that block.
+   
+   **Example**:
+   ```javascript
+   if (true) {
+       let blockScopedVariable = "I am inside a block";
+       console.log(blockScopedVariable); // Accessible here
+   }
+
+   // console.log(blockScopedVariable); // Error: Not accessible here
+   ```
+
+   - Unlike `var`, which leaks out of blocks into the function scope, `let` and `const` respect block boundaries, providing a more predictable variable behavior.
+
+### 4. **Module Scope** (ES6 Modules)
+   - In modern JavaScript environments that support ES6 modules (e.g., in Node.js or in browsers with `<script type="module">`), variables declared in a module file are scoped to that module by default.
+   - Module-scoped variables are not accessible in the global scope or in other modules unless explicitly exported and imported. This scoping is useful for organizing and encapsulating code in large applications.
+   
+   **Example** (in a module file `exampleModule.js`):
+   ```javascript
+   let moduleScopedVariable = "I am in a module";
+   
+   export { moduleScopedVariable };
+   ```
+   In another file, you would import it:
+   ```javascript
+   import { moduleScopedVariable } from './exampleModule.js';
+   console.log(moduleScopedVariable); // Accessible after import
+   ```
+
+### Summary Table of JavaScript Scopes
+
+| Scope Type    | Description                                       | Example Declaration                |
+|---------------|---------------------------------------------------|------------------------------------|
+| **Global**    | Accessible anywhere in the code                   | `let x = 10;`                      |
+| **Function**  | Accessible only within the function               | `function foo() { var y = 20; }`   |
+| **Block**     | Accessible only within a specific block           | `if (true) { let z = 30; }`        |
+| **Module**    | Accessible only within the module file            | `export const m = "module";`       |
+
+### Key Points to Remember:
+   - **Global variables** can be accessed from anywhere, which can lead to unintentional interference in larger applications, so it’s best to minimize their use.
+   - **Function scope** with `var` doesn’t respect block boundaries, so `var` should generally be avoided in favor of `let` and `const`.
+   - **Block scope** with `let` and `const` helps prevent accidental variable reassignments and makes code more predictable.
+   - **Module scope** allows you to keep variables and functions private to a module, enabling modular and maintainable code structure. 
+
+Choosing the right scope for variables helps maintain clean, modular, and bug-free code.

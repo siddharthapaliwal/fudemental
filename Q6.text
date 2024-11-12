@@ -1,0 +1,65 @@
+Q6. What is Closure? Give an example?
+Answer:-In JavaScript, a **closure** is a function that "remembers" its surrounding scope or lexical environment, even after the outer function in which it was defined has finished executing. This allows the inner function to access and manipulate variables from the outer function's scope even after the outer function has returned.
+
+### How Closures Work
+
+A closure is created when:
+1. A function is defined inside another function, allowing it to capture variables from the outer function's scope.
+2. The inner function is returned or otherwise accessible outside the outer function, allowing it to continue accessing the captured variables.
+
+### Example of Closure
+
+Here’s an example to demonstrate closures:
+
+```javascript
+function createGreeting(greeting) {
+    // greeting is part of the outer function's scope
+    return function(name) {
+        // Inner function has access to greeting even after createGreeting has finished
+        console.log(`${greeting}, ${name}!`);
+    };
+}
+
+const sayHello = createGreeting("Hello");  // Returns a function that has access to "greeting"
+sayHello("Alice"); // Output: Hello, Alice!
+sayHello("Bob");   // Output: Hello, Bob!
+```
+
+**Explanation**:
+- The `createGreeting` function takes `greeting` as an argument and returns an inner function.
+- This inner function takes a `name` parameter and uses both `name` and the outer `greeting` variable to produce a message.
+- When `createGreeting("Hello")` is called, it returns a function that "remembers" the `greeting` value (`"Hello"`), forming a closure around it.
+- The inner function can then access `greeting` even after `createGreeting` has finished executing, allowing it to combine `greeting` with different `name` values.
+
+### Practical Use Cases for Closures
+
+1. **Data Privacy**: Closures can create private variables that can't be accessed directly from outside functions, helpful in encapsulation.
+   ```javascript
+   function createCounter() {
+       let count = 0; // private variable
+       return function() {
+           count++;
+           console.log(count);
+       };
+   }
+
+   const counter = createCounter();
+   counter(); // Output: 1
+   counter(); // Output: 2
+   ```
+
+2. **Partial Application**: Closures are used to pre-fill certain arguments for a function, helpful in functional programming.
+   ```javascript
+   function multiplyBy(factor) {
+       return function(number) {
+           return number * factor;
+       };
+   }
+
+   const double = multiplyBy(2);
+   console.log(double(5)); // Output: 10
+   ```
+
+### Summary
+
+A **closure** in JavaScript allows an inner function to access variables from an outer function’s scope even after the outer function has executed. Closures are foundational for creating encapsulated and reusable code in JavaScript, supporting private variables and functional programming techniques.

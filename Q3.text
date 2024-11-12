@@ -1,0 +1,55 @@
+Q2. What is JavaScript?
+Answer:-JavaScript has a variety of data types that can be categorized into **primitive** and **non-primitive** (or reference) types. These data types help developers define and manipulate different kinds of data within their applications.
+
+### 1. **Primitive Data Types**
+   Primitive data types are simple values that are stored directly in the memory location associated with a variable. JavaScript has six main primitive data types:
+
+   - **Number**: Represents both integer and floating-point numbers. JavaScript only has one type of number, and it can represent values within the range of `-(2^53 - 1)` to `2^53 - 1`. 
+     - Example: `42`, `3.14`, `-0.5`
+
+   - **BigInt**: Introduced in ECMAScript 2020, BigInt represents numbers larger than the maximum safe integer limit of the Number type (i.e., larger than \(2^{53} - 1\)). It’s used for precise large integer calculations.
+     - Example: `12345678901234567890n`
+
+   - **String**: Represents a sequence of characters. Strings are immutable, meaning once created, their values cannot be changed directly.
+     - Example: `"Hello, World!"`, `'JavaScript'`
+
+   - **Boolean**: Represents a logical entity and can have only two values: `true` or `false`.
+     - Example: `true`, `false`
+
+   - **Undefined**: Indicates a variable has been declared but has not yet been assigned a value. When a variable is declared without a value, JavaScript automatically assigns `undefined` to it.
+     - Example: `let x; console.log(x); // undefined`
+
+   - **Null**: Represents the intentional absence of any object value. `null` is often used to signify that a variable is empty or unknown.
+     - Example: `let person = null;`
+
+   - **Symbol**: Introduced in ECMAScript 2015 (ES6), a Symbol is a unique and immutable primitive value often used to create unique property keys for objects, avoiding property name conflicts.
+     - Example: `let sym = Symbol("unique");`
+
+### 2. **Non-Primitive (Reference) Data Types**
+   Non-primitive data types are objects that can store collections of values and more complex entities. In JavaScript, the main non-primitive type is the **Object**.
+
+   - **Object**: An Object in JavaScript is a collection of properties, where each property is a key-value pair. Objects are used to store complex data structures and can contain other objects, arrays, functions, and primitive values.
+     - Example: `let person = { name: "Alice", age: 30 };`
+
+   - **Array**: An Array is a special type of object that represents an ordered list of values, where each value is assigned an index. Arrays are often used for list-like structures.
+     - Example: `let colors = ["red", "green", "blue"];`
+
+   - **Function**: Functions are also objects in JavaScript. A function is a reusable block of code designed to perform a particular task.
+     - Example: `function greet() { console.log("Hello!"); }`
+
+### Summary of JavaScript Data Types
+
+| Type        | Category     | Description                                     | Example                      |
+|-------------|--------------|-------------------------------------------------|------------------------------|
+| **Number**  | Primitive    | Represents numerical values                      | `42`, `3.14`                 |
+| **BigInt**  | Primitive    | Represents large integers                        | `9007199254740991n`          |
+| **String**  | Primitive    | Represents sequences of characters               | `"hello"`, `'world'`         |
+| **Boolean** | Primitive    | Logical true or false                            | `true`, `false`              |
+| **Undefined**| Primitive   | Declared but uninitialized variables             | `undefined`                  |
+| **Null**    | Primitive    | Intentional absence of any value                 | `null`                       |
+| **Symbol**  | Primitive    | Unique and immutable identifier                  | `Symbol("id")`               |
+| **Object**  | Non-Primitive| Collection of key-value pairs                    | `{ name: "Alice" }`          |
+| **Array**   | Non-Primitive| Ordered list of values                           | `["red", "green"]`           |
+| **Function**| Non-Primitive| Block of reusable code                           | `function() {}`              |
+
+These data types allow JavaScript to handle a wide range of data and provide flexibility in managing and manipulating information across applications.

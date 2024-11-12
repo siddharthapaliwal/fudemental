@@ -1,0 +1,37 @@
+Q7. What is the difference between the operators ‘==‘ & ‘===‘?
+Answer:-In JavaScript, `==` and `===` are comparison operators, but they work differently in terms of type comparison and equality check.
+
+### 1. `==` (Loose Equality)
+   - The `==` operator, known as "loose equality" or "abstract equality," compares two values for equality **after converting them to a common type** if they are of different types. This type coercion can lead to unexpected results, as JavaScript tries to make the values comparable by implicitly converting one or both of them.
+
+   **Examples**:
+   ```javascript
+   console.log(5 == '5');        // true  (string '5' is converted to number 5)
+   console.log(0 == false);      // true  (false is converted to 0)
+   console.log(null == undefined); // true (they are considered equal in loose equality)
+   ```
+
+   - **Use Case**: The `==` operator may be useful in situations where type conversions are intended or harmless. However, because of possible confusion, it is generally recommended to use `===` instead for precise equality checks.
+
+### 2. `===` (Strict Equality)
+   - The `===` operator, known as "strict equality," compares both the **value** and the **type** of the operands. It does not perform any type conversion, so both the type and the value must match exactly for the comparison to return `true`.
+
+   **Examples**:
+   ```javascript
+   console.log(5 === '5');       // false (different types: number vs. string)
+   console.log(0 === false);     // false (different types: number vs. boolean)
+   console.log(null === undefined); // false (different types: null vs. undefined)
+   console.log(5 === 5);         // true (same type and value)
+   ```
+
+   - **Use Case**: The `===` operator is generally preferred over `==` in JavaScript because it ensures that both the value and type are exactly the same, leading to fewer unexpected results.
+
+### Summary of `==` vs `===`
+
+| Comparison Operator | Checks             | Type Conversion | Example                     | Result |
+|---------------------|--------------------|-----------------|-----------------------------|--------|
+| `==` (Loose Equality) | Value equality   | Yes             | `5 == '5'`                  | `true` |
+| `===` (Strict Equality) | Value & Type   | No              | `5 === '5'`                 | `false`|
+
+### Conclusion
+Use `===` (strict equality) whenever possible for accurate comparisons, as it avoids unexpected results caused by type coercion, making code easier to read and debug.
